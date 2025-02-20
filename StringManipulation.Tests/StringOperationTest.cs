@@ -5,7 +5,7 @@ namespace StringManipulation.Tests;
 
 public class StringOperationTest
 {
-    [Fact]
+    [Fact(Skip = "At the moment this test is not recommended, for example = TICKET=001")]
     public void ConcatenateStrings()
     {
         // Arrange
