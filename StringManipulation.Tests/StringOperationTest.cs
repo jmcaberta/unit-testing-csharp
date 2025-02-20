@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.Marshalling;
 using Xunit.Sdk;
 
 namespace StringManipulation.Tests;
@@ -80,6 +81,20 @@ public class StringOperationTest
         var result = stringOperations.GetStringLength(str);
         // Assert
         Assert.Equal(str.Length, result);
+    }
+
+    [Theory]
+    [InlineData("V", 5)]
+    [InlineData("III", 3)]
+    [InlineData("X", 10)]
+    public void FromRomanToNumber(string romanNumber, int expected)
+    {
+        // Arrange
+        var stringOperations = new StringOperations();
+        // Act
+        var result = stringOperations.FromRomanToNumber(romanNumber);
+        // Assert
+        Assert.Equal(expected, result);
     }
     
 }
