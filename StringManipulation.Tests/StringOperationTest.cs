@@ -1,5 +1,7 @@
 using System.Runtime.InteropServices.Marshalling;
+using Microsoft.Extensions.Logging;
 using Xunit.Sdk;
+using Moq;
 
 namespace StringManipulation.Tests;
 
@@ -96,5 +98,18 @@ public class StringOperationTest
         // Assert
         Assert.Equal(expected, result);
     }
-    
+
+    [Fact]
+    public void CountOccurrences()
+    {
+        //Arrange
+        var mockLogger = new Mock<ILogger<StringOperations>>();
+        var strOperations = new StringOperations(mockLogger.Object);
+        
+        // Act
+        var result = strOperations.CountOccurrences("Hello platzi team", 'l');
+        //Assert
+        Assert.Equal(3, result);
+    }
+
 }
